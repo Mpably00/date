@@ -20,9 +20,37 @@ public class Date {
 		if ( this.year == another.getYear() ){
 			return true;
 		}
-		return false;
+		else{
+			return false;
+		}
+	}
+	public int getMonth(){
+		return this.month;
 	}
 	
+	boolean isSameMonth(Date another){
+		if(this.month == another.getMonth() ){
+			return true;
+		}
+		else{
+			return false;
+	}
+
+	}	
+	
+	public int getDay(){
+		return this.day;
+	}
+	boolean isSameDay(Date another){
+
+		if(this.day == another.getDay() ){
+			return true;
+		}
+		else {
+			return false;
+		}
+		
+	}
 	public String toString(){
 		return this.day + "/" + this.month + "/" + this.year;
 	}
