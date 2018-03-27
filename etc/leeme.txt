@@ -1,0 +1,5 @@
+Avance en la practica dia a dia:
+
+28/3/2018:
+
+	He añadido switch para saber el nombre del mes. Estoy teniendo problemas a la hora de compilar con el build.xml.
