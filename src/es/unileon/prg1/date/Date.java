@@ -54,8 +54,8 @@ public class Date {
 	public String toString(){
 		return this.day + "/" + this.month + "/" + this.year;
 	}
-
-
+	
+	String name;
 	String getmonthname(int month){
 		
 		switch(this.month){
@@ -97,6 +97,40 @@ public class Date {
 				break;
 		}
 		return name;
-		}}
-
-
+		}
+		String season;
+		String getSeasonName(int month) {
+			switch(this.month){
+				
+				case 1:
+				case 2:
+				case 3:
+					season="invierno";
+					break;
+				case 4:
+				case 5:
+				case 6:
+					season="primavera";
+					break;
+				case 7:
+				case 8:
+				case 9:
+					season="verano";
+					break;
+				case 10:
+				case 11:
+				case 12:
+					season="otoño";
+					break;
+				}
+			return season;
+			}
+		String monthsLeft(){
+			int i;
+			StringBuielder months;
+			months=new StringBuielder();				
+				for( i=this.month;i<=12;i++){
+					i++;}
+		return i;
+		}				
+}
