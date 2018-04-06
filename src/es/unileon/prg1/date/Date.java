@@ -124,13 +124,44 @@ public class Date {
 					break;
 				}
 			return season;
-			}
-		String monthsLeft(){
-			int i;
-			StringBuielder months;
-			months=new StringBuielder();				
-				for( i=this.month;i<=12;i++){
-					i++;}
-		return i;
+			
 		}				
-}
+		String correctDay;
+		String getcorrectDay(int day){
+			switch(this.day){
+				case 1:
+				case 3:
+				case 5:
+				case 7:
+				case 8:
+				case 10:
+				case 12:
+					if(day<=31){ 
+						correctDay="correct";
+					}
+					else{
+					System.out.println("ERROR");
+					}
+					break;
+				case 2:
+					if((day<=28)||(day<=29)){
+						correctDay="correct";
+					}
+					else{
+					System.out.println("ERROR");
+					}
+					break;
+				case 4:
+				case 6:
+				case 9:
+				case 11:
+					if(day<=30){
+						correctDay="correct";
+					}
+					else{
+						System.out.println("ERROR");
+					}
+					break;
+				}
+			return correctDay;
+		}}
