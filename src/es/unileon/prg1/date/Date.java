@@ -1,11 +1,12 @@
-package es.unileon.prg1.date;
+
 
 public class Date {
 	private int day;
 	private int month;
 	private int year;
+
 	
-	// Constructor mal programado: Permite crear fechas no validas
+
 	public Date(int day, int month, int year){
 		this.day = day;
 		this.month = month;
@@ -36,8 +37,8 @@ public class Date {
 			return false;
 	}
 
-	}	
-	
+		
+	}
 	public int getDay(){
 		return this.day;
 	}
@@ -54,10 +55,10 @@ public class Date {
 	public String toString(){
 		return this.day + "/" + this.month + "/" + this.year;
 	}
+	//devuelve el nombre del mes 
 	
-	String name;
-	String getmonthname(int month){
-		
+	String getMonthName(){
+	String name;	
 		switch(this.month){
 			case 1:
 				name="enero";
@@ -95,11 +96,15 @@ public class Date {
 			case 12:
 				name="diciembre";
 				break;
+			default:
+				name= "ERROR";
 		}
 		return name;
 		}
-		String season;
-		String getSeasonName(int month) {
+	//dice la estacion en la que se encuentra
+		
+		String getSeasonName() {
+		String season;	
 			switch(this.month){
 				
 				case 1:
@@ -122,13 +127,18 @@ public class Date {
 				case 12:
 					season="otoño";
 					break;
+
+				default:
+					season= "ERROR";
 				}
 			return season;
 			
 		}				
+		//comprueba que el dia es corecto 
+	
+		String getcorrectDayName(){
 		String correctDay;
-		String getcorrectDay(int day){
-			switch(this.day){
+		switch(this.day){
 				case 1:
 				case 3:
 				case 5:
@@ -140,7 +150,7 @@ public class Date {
 						correctDay="correct";
 					}
 					else{
-					System.out.println("ERROR");
+						correctDay="ERROR";
 					}
 					break;
 				case 2:
@@ -148,7 +158,7 @@ public class Date {
 						correctDay="correct";
 					}
 					else{
-					System.out.println("ERROR");
+						correctDay="ERROR";
 					}
 					break;
 				case 4:
@@ -159,9 +169,24 @@ public class Date {
 						correctDay="correct";
 					}
 					else{
-						System.out.println("ERROR");
+						correctDay="ERROR";
 					}
 					break;
+					
+				default:
+					correctDay= "ERROR";
 				}
 			return correctDay;
-		}}
+			}
+			String monthsLeft(){
+				String month1=" ";
+				StringBuilder months= new StringBuilder();
+			for(int i=month;i<=12;i++){
+				month1=i;
+			
+}
+		return month1.toString();
+	}
+		
+		}
+
