@@ -178,21 +178,16 @@ public class Date {
 				}
 			return correctDay;
 			}
-			/*public String printMonthLefts() throws DateException{
+//meses que faltan hasta final de año
+			public String printMonthLefts(){
 				StringBuffer salida= new StringBuffer();				
-				Date a=new Date(this.day,this.month,this.year);
-					if(a.getMonth()<12){
-						salida.append("Los meses restantes son:" );
-					}
-					else{
-						salida.append("No queda ningun mes");
-					}
-			for(int i=a.getMonth;i<12;i++){
+				Date a= new Date(this.day,this.month,this.year);
+			for(int i=this.month;i<12;i++){
 				a.month+=1;
 					salida.append(a.getMonthName()+" ");
 			}
 			return salida.toString();
-		}*/
+		}
 //cuenta las fechas que quedan en el mes
 		public int countDate(){
 			int i=0,dia,mes=0;
@@ -228,7 +223,32 @@ public class Date {
 			meses="Febrero";
 		}
 			return meses;
-		}	
+		}
+		
+//dias que hay desde el primer dia del año
+		public int countDay(){
+		int mes=this.month,dias=0,Total,i,j;
+		for(i=0;i<this.month;i++){
+			if((i==1)||(i==3)||(i==5)||(i==7)||(i==8)||(i==10)||(i==12)){
+				for(j=0;j<31;j++){
+					dias=dias+j;
+				}
+			}
+			else if((i==4)||(i==6)||(i==9)||(i==11)){
+				for(j=0;j<30;j++){
+					dias=dias+j;
+				}
+			}
+			else{
+				for(j=0;j<28;j++){
+					dias=dias+j;
+				}
+			}
+		}
+			Total=dias+this.day;
+		return Total;
+}
+				
 //fecha al azar do-while
 		public int attempsNeededDoWhile(){
 			double dia,mes;
