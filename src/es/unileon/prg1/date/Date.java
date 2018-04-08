@@ -52,8 +52,28 @@ public class Date {
 		}
 		
 	}
+	boolean isSame(Date aDate){
+		if((this.year==aDate.getYear())&&(this.month==aDate.getMonth())&&(this.day==aDate.getDay())){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 	public String toString(){
 		return this.day + "/" + this.month + "/" + this.year;
+	}
+	public boolean isSameYearNoIf(Date aDate){
+		return this.year==aDate.getYear()?true:false;
+	}
+	public boolean isSameMonthNoIf(Date aDate){
+		return this.month==aDate.getMonth()?true:false;
+	}
+	public boolean isSameDayNoIf(Date aDate){
+		return this.day==aDate.getDay()?true:false;
+	}
+	public boolean isSameNoIf(Date aDate){
+		return (this.year==aDate.getYear()&&this.month==aDate.getMonth()&&this.day==aDate.getDay())?true:false;
 	}
 	//devuelve el nombre del mes 
 	
@@ -189,25 +209,32 @@ public class Date {
 			return salida.toString();
 		}
 //cuenta las fechas que quedan en el mes
-		public int countDate(){
+		public String countDate(){
+			Date fecha=new Date(this.day,this.month,this.year);
+			StringBuffer salida= new StringBuffer();
 			int i=0,dia=0,mes=0;
 			mes=this.month;
+						
 		if ((mes==1)||(mes==3)||(mes==5)||(mes==7)||(mes==8)||(mes==10)||(mes==12)){
 			for(i=this.day;i<31;i++){
-				dia=i;
+				fecha.day+=1;
+				salida.append(fecha.toString()+" ");
 			}
 		}
 		else if((mes==4)||(mes==6)||(mes==9)||(mes==11)){
 			for( i=this.day;i<30;i++){
-				dia=i;
+				fecha.day+=1;
+				salida.append(fecha.toString()+" ");
 			}
 		}
 		else{
 			for(i=this.day;i<28;i++){
-				dia=i;
+				fecha.day+=1;
+				salida.append(fecha.toString()+" ");
 			}
-		}
-		return dia;
+		
+	}
+		return salida.toString();
 }
 //cuenta los meses que tengan el mismo numero de dias
 		public String countMonths(){
@@ -228,19 +255,19 @@ public class Date {
 //dias que hay desde el primer dia del año
 		public int countDay(){
 		int mes=this.month,dias1=0,dias2=0,dias3=0,Total,i,j;
-		for(i=0;i<this.month;i++){
+		for(i=1;i<this.month;i++){
 			if((i==1)||(i==3)||(i==5)||(i==7)||(i==8)||(i==10)||(i==12)){
-				for(j=0;j<31;j++){
+				for(j=1;j<31;j++){
 					dias1=dias1+j;
 				}
 			}
 			else if((i==4)||(i==6)||(i==9)||(i==11)){
-				for(j=0;j<30;j++){
+				for(j=1;j<30;j++){
 					dias2=dias2+j;
 				}
 			}
 			else{
-				for(j=0;j<28;j++){
+				for(j=1;j<28;j++){
 					dias3=dias3+j;
 				}
 			}
@@ -254,7 +281,8 @@ public class Date {
 			double dia,mes;
 			int contador=0;
 		
-				mes=Math.floor(Math.random()*(12-1+1)+1);
+			do{	do{
+					mes=Math.floor(Math.random()*(12-1+1)+1);
 					
 					if((mes==1)||(mes==3)||(mes==5)||(mes==7)||(mes==8)||(mes==10)||(mes==12)){
 						dia=Math.floor(Math.random()*(31-1+1)+1);}
@@ -264,8 +292,10 @@ public class Date {
 
 					else {
 						dia=Math.floor(Math.random()*(28-1+1)+1);}
-				do{
-					contador=contador+1;
+				contador++;}
+				while((mes!=this.month)||(dia!=this.day));
+				
+					
 				}
 				while((dia!=this.day)||(mes!=this.month));
 
@@ -277,9 +307,9 @@ public class Date {
 //fecha al azar while
 	public int attempsNeededWhile(){
 				
-			double dia,mes;
+			double dia=0,mes=0;
 			int contador=0;
-		
+		while((dia!=this.day)||(mes!=this.month)){
 				mes=Math.floor(Math.random()*(12-1+1)+1);
 					if((mes==1)||(mes==3)||(mes==5)||(mes==7)||(mes==8)||(mes==10)||(mes==12)){
 						dia=Math.floor(Math.random()*(31-1+1)+1);}
@@ -289,9 +319,9 @@ public class Date {
 
 					else {
 						dia=Math.floor(Math.random()*(28-1+1)+1);}
-				while((dia!=this.day)||(mes!=this.month)){
+				
 
-					contador=contador+1;
+					contador++;
 				}
 			return contador;
 		}

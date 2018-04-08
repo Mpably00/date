@@ -5,7 +5,7 @@ public class MainDate {
 
 	public static void main(String[] args) {
 		Date today, tomorrow;
-		today = new Date(8, 4, 2018);
+		today = new Date(8, 1, 2018);
 		tomorrow = new Date(21, 3, 2018);
 		System.out.println(today + " isSameYear " + tomorrow + "? " + today.isSameYear(tomorrow));
 		System.out.println(today.getMonthName());
@@ -20,7 +20,8 @@ public class MainDate {
 		System.out.println(today.countMonths());
 		System.out.println(tomorrow.countMonths());
 		System.out.println(today.countDay());
-		//System.out.println(today.attempsNeededWhile());
+		System.out.println(today.attempsNeededDoWhile());
+		System.out.println(today.attempsNeededWhile());
 		System.out.println(today.weekDay());
 }
 }
