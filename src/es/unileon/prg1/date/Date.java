@@ -178,15 +178,105 @@ public class Date {
 				}
 			return correctDay;
 			}
-			String monthsLeft(){
-				String month1=" ";
-				StringBuilder months= new StringBuilder();
-			for(int i=month;i<=12;i++){
-				month1=i;
-			
-}
-		return month1.toString();
-	}
-		
+			/*public String printMonthLefts() throws DateException{
+				StringBuffer salida= new StringBuffer();				
+				Date a=new Date(this.day,this.month,this.year);
+					if(a.getMonth()<12){
+						salida.append("Los meses restantes son:" );
+					}
+					else{
+						salida.append("No queda ningun mes");
+					}
+			for(int i=a.getMonth;i<12;i++){
+				a.month+=1;
+					salida.append(a.getMonthName()+" ");
+			}
+			return salida.toString();
+		}*/
+//cuenta las fechas que quedan en el mes
+		public int countDate(){
+			int i=0,dia,mes=0;
+			mes=this.month;
+		if ((mes==1)||(mes==3)||(mes==5)||(mes==7)||(mes==8)||(mes==10)||(mes==12)){
+			for(i=this.day;i<31;i++){
+				dia=i;
+			}
 		}
+		else if((mes==4)||(mes==6)||(mes==9)||(mes==11)){
+			for( i=this.day;i<30;i++){
+				dia=i;
+			}
+		}
+		else{
+			for(i=this.day;i<28;i++){
+				dia=i;
+			}
+		}
+		return i;
+}
+//cuenta los meses que quedan
+		public String countMonths(){
+			int mes=this.month;
+			String meses;
+		if ((mes==1)||(mes==3)||(mes==5)||(mes==7)||(mes==8)||(mes==10)||(mes==12)){
+			meses="Enero,Marzo,Mayo,Julio,Agosto,Octubre,Diciembre";
+		}
+		else if((mes==4)||(mes==6)||(mes==9)||(mes==11)){
+			meses="Abril,Junio,Septiembre,Noviembre";
+		}
+		else{
+			meses="Febrero";
+		}
+			return meses;
+		}	
+//fecha al azar do-while
+		public int attempsNeededDoWhile(){
+			double dia,mes;
+			int contador=0;
+		
+				mes=Math.floor(Math.random()*(12-1+1)+1);
+					
+					if((mes==1)||(mes==3)||(mes==5)||(mes==7)||(mes==8)||(mes==10)||(mes==12)){
+						dia=Math.floor(Math.random()*(31-1+1)+1);}
+					
+					else if((mes==4)||(mes==6)||(mes==9)||(mes==11)){
+						dia=Math.floor(Math.random()*(30-1+1)+1);}
+
+					else {
+						dia=Math.floor(Math.random()*(28-1+1)+1);}
+				do{
+					contador=contador+1;
+				}
+				while((dia!=this.day)||(mes!=this.month));
+
+				
+		
+		return contador;
+		}
+
+//fecha al azar while
+	public int attempsNeededWhile(){
+			double dia,mes;
+			int contador=0;
+		
+				mes=Math.floor(Math.random()*(12-1+1)+1);
+					if((mes==1)||(mes==3)||(mes==5)||(mes==7)||(mes==8)||(mes==10)||(mes==12)){
+						dia=Math.floor(Math.random()*(31-1+1)+1);}
+					
+					else if((mes==4)||(mes==6)||(mes==9)||(mes==11)){
+						dia=Math.floor(Math.random()*(30-1+1)+1);}
+
+					else {
+						dia=Math.floor(Math.random()*(28-1+1)+1);}
+				while((dia!=this.day)||(mes!=this.month)){
+
+					contador=contador+1;
+				}
+			return contador;
+		}
+	}
+	
+		
+
+	
 
