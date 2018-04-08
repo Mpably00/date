@@ -138,7 +138,7 @@ public class Date {
 	
 		String getcorrectDayName(){
 		String correctDay;
-		switch(this.day){
+		switch(this.month){
 				case 1:
 				case 3:
 				case 5:
@@ -146,7 +146,7 @@ public class Date {
 				case 8:
 				case 10:
 				case 12:
-					if(day<=31){ 
+					if(this.day<32){ 
 						correctDay="correct";
 					}
 					else{
@@ -154,7 +154,7 @@ public class Date {
 					}
 					break;
 				case 2:
-					if((day<=28)||(day<=29)){
+					if((this.day<30)||(day<29)){
 						correctDay="correct";
 					}
 					else{
@@ -165,7 +165,7 @@ public class Date {
 				case 6:
 				case 9:
 				case 11:
-					if(day<=30){
+					if(this.day<31){
 						correctDay="correct";
 					}
 					else{
@@ -190,7 +190,7 @@ public class Date {
 		}
 //cuenta las fechas que quedan en el mes
 		public int countDate(){
-			int i=0,dia,mes=0;
+			int i=0,dia=0,mes=0;
 			mes=this.month;
 		if ((mes==1)||(mes==3)||(mes==5)||(mes==7)||(mes==8)||(mes==10)||(mes==12)){
 			for(i=this.day;i<31;i++){
@@ -207,9 +207,9 @@ public class Date {
 				dia=i;
 			}
 		}
-		return i;
+		return dia;
 }
-//cuenta los meses que quedan
+//cuenta los meses que tengan el mismo numero de dias
 		public String countMonths(){
 			int mes=this.month;
 			String meses;
@@ -227,25 +227,25 @@ public class Date {
 		
 //dias que hay desde el primer dia del año
 		public int countDay(){
-		int mes=this.month,dias=0,Total,i,j;
+		int mes=this.month,dias1=0,dias2=0,dias3=0,Total,i,j;
 		for(i=0;i<this.month;i++){
 			if((i==1)||(i==3)||(i==5)||(i==7)||(i==8)||(i==10)||(i==12)){
 				for(j=0;j<31;j++){
-					dias=dias+j;
+					dias1=dias1+j;
 				}
 			}
 			else if((i==4)||(i==6)||(i==9)||(i==11)){
 				for(j=0;j<30;j++){
-					dias=dias+j;
+					dias2=dias2+j;
 				}
 			}
 			else{
 				for(j=0;j<28;j++){
-					dias=dias+j;
+					dias3=dias3+j;
 				}
 			}
 		}
-			Total=dias+this.day;
+			Total=dias1+dias2+dias3+this.day;
 		return Total;
 }
 				
@@ -276,6 +276,7 @@ public class Date {
 
 //fecha al azar while
 	public int attempsNeededWhile(){
+				
 			double dia,mes;
 			int contador=0;
 		
@@ -294,7 +295,74 @@ public class Date {
 				}
 			return contador;
 		}
+	public String weekDay(){
+		String name;	
+		int D,M,N,A,E,S,week;
+		
+		D=this.day;
+	
+			if(this.month==1){
+				M=0;}
+			else if(this.month==2){
+				M=3;}
+			else if(this.month==3){
+				M=3;}
+			else if(this.month==4){
+				M=6;}
+			else if(this.month==5){
+				M=1;}
+			else if(this.month==6){
+				M=4;}
+			else if(this.month==7){
+				M=6;}
+			else if(this.month==8){
+				M=2;}
+			else if(this.month==9){
+				M=5;}
+			else if(this.month==10){
+				M=0;}
+			else if(this.month==11){
+				M=3;}
+			else{
+				M=5;}
+			A=this.year%100;
+			E=A/4;
+			S=6;
+				N=D+M+A+E+S;
+			week=N%7;
+
+		switch(week){
+			case 1:
+				name="Lunes";
+				break;
+			case 2:
+				name="Martes";
+				break;
+			case 3:
+				name="Miercoles";
+				break;
+			case 4:
+				name="Jueves";
+				break;
+			case 5:
+				name="Viernes";
+				break;
+			case 6:
+				name="Sabado";
+				break;
+			case 0:
+				name="Domingo";
+				break;
+			default:
+				name="ERROR";
+
 	}
+		return name;
+}
+}
+				
+			
+			
 	
 		
 
